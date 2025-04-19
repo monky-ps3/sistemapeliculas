@@ -9,3 +9,4 @@ use CodeIgniter\Router\RouteCollection;
 //$routes->get('codeigniter4', 'Home::index');
 //$routes->get('Pelicula', 'Pelicula::index');
 $routes->presenter('Pelicula');
+$routes->presenter('Categoria');
