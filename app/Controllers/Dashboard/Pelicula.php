@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Controllers;
 
+namespace App\Controllers\Dashboard;
+use App\Controllers\BaseController;
 use App\Models\PeliculaModel;
 
 class Pelicula extends BaseController
@@ -9,14 +10,14 @@ class Pelicula extends BaseController
 
     public function new()
     {
-        echo view('pelicula/new');
+        echo view('dashboard/pelicula/new');
     }
     public function show($id)
     {
         $peliculaModel = new PeliculaModel();
         //var_dump($peliculaModel->find($id));
 
-        echo view('pelicula/show', ['pelicula' => $peliculaModel->find($id)]);
+        echo view('dashboard/pelicula/show', ['pelicula' => $peliculaModel->find($id)]);
     }
     public function create()
     {
@@ -26,7 +27,11 @@ class Pelicula extends BaseController
             'descripcion' => $this->request->getpost('descripcion')
 
         ]);
-        echo 'creado';
+        //sistemapeliculas/dashboard/Pelicula
+        //dashboard/pelicula/index
+        //ROUTES  REDIRECCIONA A dashboard/Pelicula           Handler      | »    | \App\Controllers\Dashboard\Pelicula::index 
+        return redirect()->to('dashboard/Pelicula/')->with('mensaje','Registro gstionado de manera exitosa');
+        //echo 'creado';
         // var_dump($this->request->getPost('titulo'));
     }
 
@@ -35,7 +40,7 @@ class Pelicula extends BaseController
         $peliculaModel = new PeliculaModel();
 
         echo view(
-            'pelicula/edit',
+            'dashboard/pelicula/edit',
             ['pelicula' => $peliculaModel->find($id)]
 
         );
@@ -48,14 +53,15 @@ class Pelicula extends BaseController
             'titulo' => $this->request->getPost('titulo'),
             'descripcion' => $this->request->getPost('descripcion')
         ]);
-        echo 'actualizado';
+        return redirect()->to('dashboard/Pelicula/')->with('mensaje','Registro actualizado de manera exitosa');
     }
     public function delete($id)
     {
         $peliculaModel = new PeliculaModel();
 
         $peliculaModel->delete($id);
-        echo "elimiado";
+        session()->setFlashdata('mensaje','Registro eliminado exitosamente');
+        return redirect()->back();
     }
 
     public function index()
@@ -63,6 +69,6 @@ class Pelicula extends BaseController
         $peliculaModel = new PeliculaModel();
         //obtener todos los regiustros 
 
-        echo view('pelicula/index', ['peliculas' => $peliculaModel->findAll()]);
+        echo view('dashboard/pelicula/index', ['peliculas' => $peliculaModel->findAll()]);
     }
 }

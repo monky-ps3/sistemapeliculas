@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controllers;
-
-
+namespace App\Controllers\Dashboard;
+//la linea de abajo se importa para que pueda funcionar el app dashboard como se encuentra dentro de una carpeta 
+use App\Controllers\BaseController;
 use App\Models\CategoriaModel;
 
 
@@ -11,14 +11,14 @@ class Categoria extends BaseController
 
     public function new()
     {
-        echo view('Categoria/new');
+        echo view('dashboard/Categoria/new');
     }
     public function show($id)
     {
         $categoriaModel = new CategoriaModel();
         //var_dump($peliculaModel->find($id));
 
-        echo view('Categoria/show', ['categoria' => $categoriaModel->find($id)]);
+        echo view('dashboard/Categoria/show', ['categoria' => $categoriaModel->find($id)]);
     }
     public function create()
     {
@@ -28,7 +28,8 @@ class Categoria extends BaseController
            
 
         ]);
-        echo 'creado';
+        return redirect()->to('dashboard/Categoria/')->with('mensaje','Registro  de manera exitosa');
+
         // var_dump($this->request->getPost('titulo'));
     }
 
@@ -37,7 +38,7 @@ class Categoria extends BaseController
         $categoriaModel = new CategoriaModel();
 
         echo view(
-            'Categoria/edit',
+            'dashboard/Categoria/edit',
             ['categoria' => $categoriaModel->find($id)]
 
         );
@@ -50,14 +51,17 @@ class Categoria extends BaseController
             'titulo' => $this->request->getPost('titulo')
             
         ]);
-        echo 'actualizado';
+        return redirect()->to('dashboard/Categoria/')->with('mensaje','Registro actualizado de manera exitosa');
+
     }
     public function delete($id)
     {
         $categoriaModel = new CategoriaModel();
 
         $categoriaModel->delete($id);
-        echo "elimiado";
+
+        session()->setFlashdata('mensaje','Registro eliminado exitosamente');
+       return redirect()->back();
     }
 
     public function index()
@@ -65,6 +69,6 @@ class Categoria extends BaseController
         $categoriaModel = new CategoriaModel();
         //obtener todos los regiustros 
 
-        echo view('Categoria/index', ['categoria' => $categoriaModel->findAll()]);
+        echo view('dashboard/Categoria/index', ['categoria' => $categoriaModel->findAll()]);
     }
 }

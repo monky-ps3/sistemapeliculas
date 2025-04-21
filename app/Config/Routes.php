@@ -8,5 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 //$routes->get('/', 'Home::index');
 //$routes->get('codeigniter4', 'Home::index');
 //$routes->get('Pelicula', 'Pelicula::index');
-$routes->presenter('Pelicula');
-$routes->presenter('Categoria');
+$routes->group('dashboard', function ($routes) {
+    $routes->presenter('Pelicula',['controller'=>'Dashboard\Pelicula']);
+    $routes->presenter('Categoria',['controller'=>'Dashboard\Categoria']);
+});

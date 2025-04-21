@@ -6,7 +6,7 @@
     <title>Editar</title>
 </head>
 <body>
-<form action="<?= base_url('/Pelicula/update/').$pelicula['id'] ?>" method="post">
+<form action="<?= base_url('dashboard/Pelicula/update/').$pelicula['id'] ?>" method="post">
         <label for="titulo">Titulo</label>
         <input type="text" name="titulo" id="titulo" placeholder="titulo" value="<?php echo $pelicula['titulo']?>">
          <label for="descripcion">Descripcion</label>

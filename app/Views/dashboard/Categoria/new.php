@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="<?= base_url('/Categoria/create') ?>" method="post">
+    <form action="<?= base_url('dashboard/Categoria/create') ?>" method="post">
         <label for="titulo">Titulo</label>
         <input type="text" name="titulo" id="titulo" placeholder="titulo">
         

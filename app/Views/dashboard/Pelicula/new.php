@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="<?= base_url('/Pelicula/create') ?>" method="post">
+    <form action="<?= base_url('dashboard/Pelicula/create') ?>" method="post">
         <label for="titulo">Titulo</label>
         <input type="text" name="titulo" id="titulo" placeholder="titulo">
          <label for="descripcion">Descripcion</label>
