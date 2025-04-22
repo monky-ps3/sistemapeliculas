@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar</title>
-</head>
-<body>
+<?php echo $this->extend('Layouts/dashboard') ?>
+<?php echo $this->section('header') ?>
+Editar Pelicula
+
+<?php echo $this->endSection() ?>
+<?php echo $this->section('contenido') ?>
 <form action="<?= base_url('dashboard/Pelicula/update/').$pelicula['id'] ?>" method="post">
         <label for="titulo">Titulo</label>
         <input type="text" name="titulo" id="titulo" placeholder="titulo" value="<?php echo $pelicula['titulo']?>">
@@ -16,5 +14,4 @@
 
          <button type="submit">Enviar</button>
     </form>
-</body>
-</html>
+    <?php echo $this->endSection() ?>

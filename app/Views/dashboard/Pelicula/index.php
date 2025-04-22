@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peliculas</title>
-</head>
-
-<body>
-    <h3>Listado de peliculas </h3>
-
-    <?php echo view('partials/_session') ?>
+<?php echo $this->extend('Layouts/dashboard')?>
+ 
+ <?php echo $this->section('header')?>
+  Listado de Peliculas
+  
+ <?php echo $this->endSection()?>
+ 
+ <?php echo $this->section('contenido')?>
     <a href="Pelicula/new/">Nuevo</a>
     <table>
         <tr>
@@ -36,6 +32,4 @@
             <?php } ?>
             </tr>
     </table>
-</body>
-
-</html>
+    <?php echo $this->endSection()?>

@@ -1,17 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="<?= base_url('dashboard/Categoria/create') ?>" method="post">
-        <label for="titulo">Titulo</label>
-        <input type="text" name="titulo" id="titulo" placeholder="titulo">
-        
+<?php echo $this->extend('Layouts/dashboard') ?>
+<?php echo $this->section('header')?>
+  Registrar Nueva Categoria
+  
+ <?php echo $this->endSection()?>
+<?php echo $this->section('contenido')?>
+<form action="<?= base_url('dashboard/Categoria/create') ?>" method="post">
+    <label for="titulo">Titulo</label>
+    <input type="text" name="titulo" id="titulo" placeholder="titulo">
 
-         <button type="submit">Enviar</button>
-    </form>
-</body>
-</html>
+
+    <button type="submit">Enviar</button>
+</form>
+<?php echo $this->endSection() ?>
