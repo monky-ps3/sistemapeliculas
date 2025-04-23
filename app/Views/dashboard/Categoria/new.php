@@ -1,7 +1,7 @@
 <?php echo $this->extend('Layouts/dashboard') ?>
 <?php echo $this->section('header')?>
   Registrar Nueva Categoria
-  
+  <?php echo view('partials/_form-error') ?>
  <?php echo $this->endSection()?>
 <?php echo $this->section('contenido')?>
 <form action="<?= base_url('dashboard/Categoria/create') ?>" method="post">

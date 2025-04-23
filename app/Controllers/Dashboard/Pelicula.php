@@ -2,6 +2,7 @@
 
 
 namespace App\Controllers\Dashboard;
+
 use App\Controllers\BaseController;
 use App\Models\PeliculaModel;
 
@@ -22,15 +23,25 @@ class Pelicula extends BaseController
     public function create()
     {
         $peliculaModel = new PeliculaModel();
-        $peliculaModel->insert([
-            'titulo' => $this->request->getpost('titulo'),
-            'descripcion' => $this->request->getpost('descripcion')
 
-        ]);
+        if ($this->validate('peliculasrules')) {
+            $peliculaModel->insert([
+                'titulo' => $this->request->getpost('titulo'),
+                'descripcion' => $this->request->getpost('descripcion')
+
+            ]);
+        } else {
+            session()->setFlashdata([
+                'validation' => $this->validator
+            ]);
+            // var_dump($this->validator->getError('titulo'));
+            //redirecciona al mismo formulario 
+            return redirect()->back()->withInput();
+        }
         //sistemapeliculas/dashboard/Pelicula
         //dashboard/pelicula/index
         //ROUTES  REDIRECCIONA A dashboard/Pelicula           Handler      | »    | \App\Controllers\Dashboard\Pelicula::index 
-        return redirect()->to('dashboard/Pelicula/')->with('mensaje','Registro gstionado de manera exitosa');
+        return redirect()->to('dashboard/Pelicula/')->with('mensaje', 'Registro gstionado de manera exitosa');
         //echo 'creado';
         // var_dump($this->request->getPost('titulo'));
     }
@@ -48,19 +59,29 @@ class Pelicula extends BaseController
     public function update($id)
     {
         $peliculaModel = new PeliculaModel();
-
-        $peliculaModel->update($id, [
-            'titulo' => $this->request->getPost('titulo'),
-            'descripcion' => $this->request->getPost('descripcion')
-        ]);
-        return redirect()->to('dashboard/Pelicula/')->with('mensaje','Registro actualizado de manera exitosa');
+        if ($this->validate('peliculasrules')) {
+            $peliculaModel->update($id, [
+                'titulo' => $this->request->getPost('titulo'),
+                'descripcion' => $this->request->getPost('descripcion')
+            ]);
+        } else {
+            session()->setFlashdata([
+                'validation' => $this->validator
+            ]);
+            // var_dump($this->validator->getError('titulo'));
+            //redirecciona al mismo formulario 
+            //withInput recupera el valor del forumulaio actuali una letra o nueva
+            return redirect()->back()->withInput();
+        }
+        //redirecciona si pasa la validacion
+        return redirect()->to('dashboard/Pelicula/')->with('mensaje', 'Registro actualizado de manera exitosa');
     }
     public function delete($id)
     {
         $peliculaModel = new PeliculaModel();
 
         $peliculaModel->delete($id);
-        session()->setFlashdata('mensaje','Registro eliminado exitosamente');
+        session()->setFlashdata('mensaje', 'Registro eliminado exitosamente');
         return redirect()->back();
     }
 
