@@ -19,12 +19,12 @@
 
         ?>
             <tr>
-                <td><?php echo $categoria['id']; ?></td>
-                <td><?php echo $categoria['titulo']; ?></td>
+                <td><?php echo $categoria->id; ?></td>
+                <td><?php echo $categoria->titulo; ?></td>
 
-                <td><a href="Categoria/show/<?php echo $categoria['id']; ?>">Show</a>
-                    <a href="Categoria/edit/<?php echo $categoria['id']; ?>">Edit</a>
-                    <form action="<?= base_url('dashboard/Categoria/delete/') . $categoria['id'] ?>" method="post">
+                <td><a href="Categoria/show/<?php echo $categoria->id; ?>">Show</a>
+                    <a href="Categoria/edit/<?php echo $categoria->id; ?>">Edit</a>
+                    <form action="<?= base_url('dashboard/Categoria/delete/') . $categoria->id ?>" method="post">
                         <button type="submit">Elimiar</button>
                     </form>
 

@@ -16,7 +16,7 @@ class Categoria extends BaseController
     public function show($id)
     {
         $categoriaModel = new CategoriaModel();
-        //var_dump($peliculaModel->find($id));
+        //var_dump($peliculaModel->find($id));  asObject()
 
         echo view('dashboard/Categoria/show', ['categoria' => $categoriaModel->find($id)]);
     }
@@ -76,8 +76,9 @@ class Categoria extends BaseController
 
         $categoriaModel->delete($id);
 
-        session()->setFlashdata('mensaje', 'Registro eliminado exitosamente');
-        return redirect()->back();
+        //session()->setFlashdata('mensaje', 'Registro eliminado exitosamente');
+        //return redirect()->back();
+        return redirect()->to('dashboard/Categoria/')->with('mensaje', 'Registro eliminado exitosamente');
     }
 
     public function index()
