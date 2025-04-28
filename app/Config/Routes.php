@@ -16,6 +16,12 @@ $routes->group('dashboard', function ($routes) {
 });
 
 
+/////api
+$routes->group('api',['namespace'=>'App\Controllers\Api'],function($routes){
+    $routes->resource('pelicula');
+    $routes->resource('categoria');
+});
+
 //parte del controlador App\Controllers\Web
 //controlador Usuario
 //funcion login iniciar session
