@@ -1,10 +1,10 @@
 <?php echo $this->extend('Layouts/dashboard') ?>
 <?php echo $this->section('header') ?>
-Registrar Nueva Pelicula
+Registrar Nueva Etiqueta
 <?php echo view('partials/_form-error') ?>
 <?php echo $this->endSection() ?>
 <?php echo $this->section('contenido') ?>
-<form action="<?= base_url('dashboard/Pelicula/create') ?>" method="post">
+<form action="<?= base_url('dashboard/Etiqueta/create') ?>" method="post">
     <label for="titulo">Titulo</label>
     <input type="text" name="titulo" id="titulo" placeholder="titulo">
 
@@ -21,8 +21,7 @@ Registrar Nueva Pelicula
 
     </select>
 
-    <label for="descripcion">Descripcion</label>
-    <textarea name="descripcion" id="descripcion"></textarea>
+    
 
     <button type="submit">Enviar</button>
 </form>

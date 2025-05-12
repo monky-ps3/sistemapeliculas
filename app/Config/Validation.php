@@ -46,7 +46,13 @@ class Validation extends BaseConfig
     ]);
     public $peliculasrules = ([
         'titulo' => 'required|min_length[3]|max_length[30]',
-        'descripcion' => 'required|min_length[3]|max_length[30]'
+        'descripcion' => 'required|min_length[3]|max_length[30]',
+        'categoria_id'=>'required|is_natural'
+    ]);
+    public $etiquetasrules = ([
+        'titulo' => 'required|min_length[3]|max_length[30]',
+       
+        'categoria_id'=>'required|is_natural'
     ]);
     public $usuarios = ([
         'usuario' => 'required|min_length[3]|max_length[25]|is_unique[usuarios.usuario]',
