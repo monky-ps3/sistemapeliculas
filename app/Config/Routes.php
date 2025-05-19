@@ -10,16 +10,19 @@ use CodeIgniter\Router\RouteCollection;
 //$routes->get('Pelicula', 'Pelicula::index');
 $routes->group('dashboard', function ($routes) {
 
-    $routes->get ('Pelicula/etiquetas/(:num)', 'Dashboard\Pelicula::etiquetas/$1');
-    $routes->post ('Pelicula/etiquetas/(:num)', 'Dashboard\Pelicula::etiquetas_post/$1');
+    $routes->get('Pelicula/etiquetas/(:num)', 'Dashboard\Pelicula::etiquetas/$1');
+    $routes->post('Pelicula/etiquetas/(:num)', 'Dashboard\Pelicula::etiquetas_post/$1');
     //$routes->post('pelicula/(:num)/etiqueta_delete/(:num)/delete','Dashboard\Pelicula::etiqueta_delete/$1/$2',['as'=>'pelicula.etiqueta_delete']);
     //$routes->post('Pelicula/(:num)/etiquetas/(:num)/delete', 'Dashboard\Pelicula::etiqueta_delete/$1/$2', ['as' => 'pelicula.etiqueta_delete']);
-    $routes->post('Pelicula/(:num)/etiqueta_delete/(:num)/delete','Dashboard\Pelicula::etiqueta_delete/$1/$2');
-   
-   
-   // $routes->get('register', '\App\Controllers\Web\Usuario::register');
+    $routes->post('Pelicula/(:num)/etiqueta_delete/(:num)/delete', 'Dashboard\Pelicula::etiqueta_delete/$1/$2');
+    $routes->post('Pelicula/borrar_imagen/(:num)', 'Dashboard\Pelicula::borrar_imagen/$1');
+    $routes->get('Pelicula/descargar_imagen/(:num)', 'Dashboard\Pelicula::descargar_imagen/$1');
+
+
+
+    // $routes->get('register', '\App\Controllers\Web\Usuario::register');
     $routes->presenter('Pelicula', ['controller' => 'Dashboard\Pelicula']);
-    $routes->presenter('Etiqueta', ['controller'=>'Dashboard\Etiqueta']);
+    $routes->presenter('Etiqueta', ['controller' => 'Dashboard\Etiqueta']);
 
     $routes->presenter('Categoria', ['controller' => 'Dashboard\Categoria']);
 

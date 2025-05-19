@@ -5,7 +5,7 @@ Editar Pelicula
 <?php echo $this->endSection() ?>
 
 <?php echo $this->section('contenido') ?>
-<form action="<?= base_url('dashboard/Pelicula/update/') . $pelicula->id ?>" method="post">
+<form enctype="multipart/form-data" action="<?= base_url('dashboard/Pelicula/update/') . $pelicula->id ?>" method="post">
         <label for="titulo">Titulo</label>
         <input type="text" name="titulo" id="titulo" placeholder="titulo" value="<?php echo  old('titulo', $pelicula->titulo)   ?>">
 
@@ -15,7 +15,7 @@ Editar Pelicula
                 <option value=""></option>
                 <?php foreach ($categorias as $c) {
                 ?>
-                        <option <?php echo $c->id !== old('categoria_id', $pelicula->categoria_id)?: 'selected' ?> value="<?php echo $c->id ?>"><?php echo $c->titulo ?></option>
+                        <option <?php echo $c->id !== old('categoria_id', $pelicula->categoria_id) ?: 'selected' ?> value="<?php echo $c->id ?>"><?php echo $c->titulo ?></option>
 
 
                 <?php } ?>
@@ -26,6 +26,12 @@ Editar Pelicula
          <?php echo old('descripcion', $pelicula->descripcion) ?>
          </textarea>
 
+
+
+        <?php if ($pelicula->id) : ?>
+                <label for="imagen">Imagen</label>
+                <input type="file" name="imagen" id="imagen">
+        <?php endif ?>
         <button type="submit">Enviar</button>
 </form>
 <?php echo $this->endSection() ?>
