@@ -117,7 +117,11 @@ class Pelicula extends BaseController
 
         //obtener todos los regiustros 
         $data = [
-            'peliculas' => $peliculaModel->select('peliculas.*,categorias.titulo as categoria')->join('categorias', 'categorias.id=peliculas.categoria_id')->find()
+            'peliculas' => $peliculaModel->select('peliculas.*,categorias.titulo as categoria')
+            ->join('categorias', 'categorias.id=peliculas.categoria_id')
+            ->paginate(10),
+            'pager'=>$peliculaModel->pager
+            //->find()
         ];
         // echo var_dump($data);
         echo view('dashboard/pelicula/index', $data);
@@ -227,7 +231,7 @@ class Pelicula extends BaseController
 
 
   ///////////otra forma de elimiar imagen pasando 2 parametros alas 2 tablas falta crear la ruta 
-  
+
     // public function borrar_imagen($peliculaId, $imagenId)
     // {
     //     $imagenModel = new ImagenModel();
@@ -258,6 +262,9 @@ class Pelicula extends BaseController
 
     private function asignar_imagen($peliculaId)
     {
+
+        //cargar helper
+        helper('filesystem');
         if ($imagefile = $this->request->getFile('imagen')) {
             if ($imagefile->isValid()) {
                 $validated = $this->validate([
@@ -278,7 +285,7 @@ class Pelicula extends BaseController
                         [
                             'imagen' => $imageNombre,
                             'extension' => $ext,
-                            'data' => 'pendiente'
+                            'data' => json_encode(get_file_info('./public/uploads/peliculas/'. $imageNombre))
                         ]
                     );
 

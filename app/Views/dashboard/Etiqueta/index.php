@@ -35,5 +35,5 @@ Listado de Etiquetas
         </tr>
 </table>
 
-
+<?php echo $pager->links()?>
 <?php echo $this->endSection() ?>

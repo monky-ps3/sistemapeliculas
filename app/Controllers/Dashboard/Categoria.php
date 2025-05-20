@@ -86,6 +86,11 @@ class Categoria extends BaseController
         $categoriaModel = new CategoriaModel();
         //obtener todos los regiustros 
 
-        echo view('dashboard/Categoria/index', ['categoria' => $categoriaModel->findAll()]);
+        echo view('dashboard/Categoria/index', [
+            'categoria' => $categoriaModel->paginate(10),
+            'pager'=>$categoriaModel->pager
+
+               // ->findAll()
+        ]);
     }
 }
