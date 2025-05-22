@@ -6,23 +6,26 @@ Editar Etiqueta
 
 <?php echo $this->section('contenido') ?>
 <form action="<?= base_url('dashboard/Etiqueta/update/') . $etiqueta->id ?>" method="post">
-        <label for="titulo">Titulo</label>
-        <input type="text" name="titulo" id="titulo" placeholder="titulo" value="<?php echo  old('titulo', $etiqueta->titulo)   ?>">
+        <div class="mb-3">
+                <label class="form-label" for="titulo">Titulo</label>
+                <input class="form-control" type="text" name="titulo" id="titulo" placeholder="titulo" value="<?php echo  old('titulo', $etiqueta->titulo)   ?>">
+        </div>
 
-        <label for="categoria_id">Categoria</label>
+          <div class="mb-3">
+        <label class="form-label" for="categoria_id">Categoria</label>
 
-        <select name="categoria_id" id="categoria_id">
+        <select class="form-control" name="categoria_id" id="categoria_id">
                 <option value=""></option>
                 <?php foreach ($categorias as $c) {
                 ?>
-                        <option <?php echo $c->id !== old('categoria_id', $etiqueta->categoria_id)?: 'selected' ?> value="<?php echo $c->id ?>"><?php echo $c->titulo ?></option>
+                        <option <?php echo $c->id !== old('categoria_id', $etiqueta->categoria_id) ?: 'selected' ?> value="<?php echo $c->id ?>"><?php echo $c->titulo ?></option>
 
 
                 <?php } ?>
 
         </select>
-    
+ </div>
 
-        <button type="submit">Enviar</button>
+        <button class="btn btn-primary" type="submit">Enviar</button>
 </form>
 <?php echo $this->endSection() ?>

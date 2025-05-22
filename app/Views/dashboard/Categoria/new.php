@@ -5,10 +5,13 @@
  <?php echo $this->endSection()?>
 <?php echo $this->section('contenido')?>
 <form action="<?= base_url('dashboard/Categoria/create') ?>" method="post">
-    <label for="titulo">Titulo</label>
-    <input type="text" name="titulo" id="titulo" placeholder="titulo">
+  <div class="mb-3">
+   <label  class="form-label"  for="titulo">Titulo</label>
+    <input  class="form-control" type="text" name="titulo" id="titulo" placeholder="titulo">
 
 
-    <button type="submit">Enviar</button>
+  </div>
+ 
+    <button class="btn btn-primary" type="submit">Enviar</button>
 </form>
 <?php echo $this->endSection() ?>

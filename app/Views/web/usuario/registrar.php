@@ -2,14 +2,32 @@
 
 <?php echo $this->section('contenido') ?>
 <?php echo view('partials/_form-error') ?>
-<form action="<?php echo base_url('register_post') ?> " method="post">
-   <label for="usuario">Usario</label>
-   <input type="text" name="usuario" id="usuario">
-   <label for="email">Email</label>
-   <input type="text" name="email" id="email">
-   <label for="contrasena">Contrasena</label>
-   <input type="password" name="contrasena" id="contrasena">
+<div class="container">
+   <div class="card mx-auto d-block mt-5" style="max-width: 500px;">
+      <div class="card-header">
+         <h1 class="text-center">Registrar</h1>
 
-   <input type="submit" value="Enviar">
-</form>
+      </div>
+      <div class="card-body">
+         <form action="<?php echo base_url('register_post') ?> " method="post">
+            <div class="mb-3">
+               <label class="form-label" for="usuario">Usario</label>
+               <input class="form-control" type="text" name="usuario" id="usuario">
+            </div>
+            <div class="mb-3">
+               <label class="form-label" for="email">Email</label>
+               <input class="form-control" type="text" name="email" id="email">
+            </div>
+            <div class="mb-3">
+               <label class="form-label" for="contrasena">Contrasena</label>
+               <input class="form-control" type="password" name="contrasena" id="contrasena">
+            </div>
+
+            <div class="d-grid">
+               <input class="btn btn-primary btn-block" type="submit" value="Enviar">
+            </div>
+         </form>
+      </div>
+   </div>
+</div>
 <?php echo $this->endSection() ?>

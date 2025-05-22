@@ -5,10 +5,11 @@ EditarCategoria
 <?php echo $this->endSection() ?>
 <?php echo $this->section('contenido') ?>
 <form action="<?= base_url('dashboard/Categoria/update/') . $categoria->id ?>" method="post">
-    <label for="titulo">Titulo</label>
-    <input type="text" name="titulo" id="titulo" placeholder="titulo" value="<?php echo $categoria->titulo ?>">
+    <div class="mb-3">
+    <label  class="form-label" for="titulo">Titulo</label>
+    <input   class="form-control" type="text" name="titulo" id="titulo" placeholder="titulo" value="<?php echo $categoria->titulo ?>">
+</div>
 
-
-    <button type="submit">Enviar</button>
+    <button class="btn btn-primary" type="submit">Enviar</button>
 </form>
 <?php echo $this->endSection() ?>

@@ -6,8 +6,8 @@ Listado de Etiquetas
 <?php echo $this->endSection() ?>
 
 <?php echo $this->section('contenido') ?>
-<a href="Etiqueta/new/">Nuevo</a>
-<table>
+<a type="button" class="btn btn-primary" href="Etiqueta/new/">Nuevo</a>
+<table class="table">
     <tr>
         <th>Id</th>
         <th>Titulo</th>
@@ -23,11 +23,11 @@ Listado de Etiquetas
             <td><?php echo $etiqueta->titulo ?></td>
             <td><?php echo $etiqueta->categoria ?></td>
       
-            <td><a href=" Etiqueta/show/<?php echo $etiqueta->id ?>">Show</a>
-                <a href="Etiqueta/edit/<?php echo $etiqueta->id ?>">Edit</a>
+            <td><a  type="button" class="btn btn-info" href=" Etiqueta/show/<?php echo $etiqueta->id ?>">Show</a>
+                <a  type="button" class="btn btn-success" href="Etiqueta/edit/<?php echo $etiqueta->id ?>">Editar</a>
            
                 <form action="<?= base_url('dashboard/Etiqueta/delete/') . $etiqueta->id?>" method="post">
-                    <button type="submit">Elimiar</button>
+                    <button type="button" class="btn btn-danger"   type="submit">Elimiar</button>
                 </form>
 
             </td>
