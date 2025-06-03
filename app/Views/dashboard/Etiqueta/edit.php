@@ -11,20 +11,20 @@ Editar Etiqueta
                 <input class="form-control" type="text" name="titulo" id="titulo" placeholder="titulo" value="<?php echo  old('titulo', $etiqueta->titulo)   ?>">
         </div>
 
-          <div class="mb-3">
-        <label class="form-label" for="categoria_id">Categoria</label>
+        <div class="mb-3">
+                <label class="form-label" for="categoria_id">Categoria</label>
 
-        <select class="form-control" name="categoria_id" id="categoria_id">
-                <option value=""></option>
-                <?php foreach ($categorias as $c) {
-                ?>
-                        <option <?php echo $c->id !== old('categoria_id', $etiqueta->categoria_id) ?: 'selected' ?> value="<?php echo $c->id ?>"><?php echo $c->titulo ?></option>
+                <select class="form-control" name="categoria_id" id="categoria_id">
+                        <option value=""></option>
+                        <?php foreach ($categorias as $c) {
+                        ?>
+                                <option <?php echo $c->id !== old('categoria_id', $etiqueta->categoria_id) ?: 'selected' ?> value="<?php echo $c->id ?>"><?php echo $c->titulo ?></option>
 
 
-                <?php } ?>
+                        <?php } ?>
 
-        </select>
- </div>
+                </select>
+        </div>
 
         <button class="btn btn-primary" type="submit">Enviar</button>
 </form>
