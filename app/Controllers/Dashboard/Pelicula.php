@@ -153,7 +153,7 @@ class Pelicula extends BaseController
     public function etiquetas_post($id)
     {
         $peliculaEtiquetaModel = new PeliculaEtiquetaModel();
-        $etiquetaId = $this->request->getPost('etiquetas_id');
+        $etiquetaId = $this->request->getPost('etiqueta_id');
         $peliculaId = $id;
         $peliculaEtiqueta = $peliculaEtiquetaModel
             ->where('etiqueta_id', $etiquetaId)

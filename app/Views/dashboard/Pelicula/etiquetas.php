@@ -26,7 +26,7 @@
     </select>
 
     <label for="">Etiquetas</label>
-    <select name="etiquetas_id" id="etiquetas_id">
+    <select name="etiqueta_id" id="etiqueta_id">
         <option value=""></option>
         <?php foreach ($etiquetas as $e) {
 
@@ -44,7 +44,7 @@
 
 <script>
     function disableEnableButton() {
-        if (document.querySelector('[name=etiquetas_id]').value == '') {
+        if (document.querySelector('[name=etiqueta_id]').value == '') {
             document.querySelector('#sendboton').setAttribute('disabled', 'disabled')
         } else {
             document.querySelector('#sendboton').removeAttribute('disabled')
@@ -55,7 +55,7 @@
         window.location.href = '<?= route_to('Pelicula/etiquetas/', $pelicula->id) ?>?categoria_id=' + this.value
 
     }
-    document.querySelector('[name=etiquetas_id]').onchange = function(event) {
+    document.querySelector('[name=etiqueta_id]').onchange = function(event) {
         disableEnableButton()
 
     }

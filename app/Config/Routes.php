@@ -26,13 +26,10 @@ $routes->group('dashboard', function ($routes) {
   $routes->presenter('Etiqueta', ['controller' => 'Dashboard\Etiqueta']);
 
   $routes->presenter('Categoria', ['controller' => 'Dashboard\Categoria']);
-
-
-  $routes->get('usuario/crear', '\App\Controllers\Web\Usuario::crear_usuario');
-  $routes->get('usuario/probar/contrasena', '\App\Controllers\Web\Usuario::probar_contrasena');
 });
 
-
+$routes->get('usuario/crear', '\App\Controllers\Web\Usuario::crear_usuario');
+$routes->get('usuario/probar/contrasena', '\App\Controllers\Web\Usuario::probar_contrasena');
 
 ////////////blog
 $routes->group('blog', function ($routes) {
@@ -49,8 +46,20 @@ $routes->group('blog', function ($routes) {
 
 /////api
 $routes->group('api', ['namespace' => 'App\Controllers\Api'], function ($routes) {
+  $routes->get('pelicula/paginado', 'Pelicula::paginado');
+  $routes->get('pelicula/paginado_full', 'Pelicula::paginado_full');
+  $routes->get('pelicula/index_por_categoria/(:num)', 'Pelicula::index_por_categoria/$1');
+  $routes->get('pelicula/index_por_etiqueta/(:num)', 'Pelicula::index_por_etiqueta/$1');
+  $routes->delete('Pelicula/(:num)/imagen/delete(:num)', 'Pelicula::borrar_imagen/$1/$2');
+  $routes->delete('Pelicula/(:num)/etiqueta_delete/(:num)/delete', 'Pelicula::etiqueta_delete/$1/$2');
+
+  $routes->post('pelicula/etiquetas/(:num)', 'Pelicula::etiquetas_post/$1');
+  $routes->post('pelicula/(:num)/imagen/upload', 'Pelicula::upload/$1');
+
+
   $routes->resource('pelicula');
   $routes->resource('categoria');
+  $routes->resource('etiqueta');
 });
 
 //parte del controlador App\Controllers\Web
